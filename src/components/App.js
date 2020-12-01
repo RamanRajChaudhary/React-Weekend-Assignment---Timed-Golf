@@ -48,7 +48,7 @@ keyListener = (evt) => {
    ): (
     <>
     <div className="ball"
-     style = {{left: this.state.x + "px", top: this.state.y + "px"}}
+     style={{left: this.state.x + "px", top: this.state.y + "px"}}
      ></div>
     <div className="hole" style={{left: '250px', top: '250px'}} ></div>
    <div className="heading-timer">{this.state.time}</div>
