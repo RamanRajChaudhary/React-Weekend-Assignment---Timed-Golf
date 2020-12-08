@@ -5,8 +5,10 @@ class Timer extends React.Component {
     super(props);
     this.state = { time: 0, x: 0, y: 0, started: false };
     this.timerInterval = null;
+    this.gameStart=this.gameStart.bind(this);
+    this.keyListener=this.keyListener.bind(this);
   }
-keyListener = (evt) => {
+keyListener  (evt)  {
   if(this.state.started){
     if(evt.keyCode === 37){
       this.setState({x: this.state.x - 5});
@@ -20,7 +22,7 @@ keyListener = (evt) => {
   }
 }
 
-  gameStart = () => {
+  gameStart  ()  {
     this.setState({
       started: true,
     });
@@ -33,18 +35,19 @@ keyListener = (evt) => {
   componentDidMount() {}
 
   componentDidUpdate(){
-    if(this.state.x === 250 && this.state.y === 250){
-      clearInterval(this.timerInterval);
-      document.removeEventListener('keydown', this.keyListener);
-    }
+    
   }
   componentWillUnmount() {}
 
   render() {
+    if(this.state.x === 250 && this.state.y === 250){
+      clearInterval(this.timerInterval);
+      document.removeEventListener('keydown', this.keyListener);
+    }
     return (
  <>
  {!this.state.started ? (
-     <button className="start" onClick={this.gameStart}></button>
+     <button className="start" onClick={this.gameStart}>start</button>
    ): (
     <>
     <div className="ball"
